@@ -1,88 +1,128 @@
-variable "tenancy_ocid" {
-}
-
-variable "user_ocid" {
-}
+/* --------------------------------------------------------------------------------------------
+# System values
+-------------------------------------------------------------------------------------------- */
 variable "region" {
  default = "ap-tokyo-1"
 }
-
+variable "tenancy_ocid" {
+ default = ""
+}
+variable "user_ocid" {
+ default = ""
+}
+variable "compartment_ocid" {
+  default = ""
+}
 variable "private_key_path" {
+ default = ""
 }
 variable "fingerprint" {
+ default = ""
+}
+
+/* --------------------------------------------------------------------------------------------
+# General cluster values
+-------------------------------------------------------------------------------------------- */
+variable "ad" {
+ default = "kvZz:AP-TOKYO-1-AD-1"
+}
+variable "ssh_key" {
+  default = ""
+}
+variable "use_custom_name" {
+  default = false
+}
+variable "cluster_name" {
+  default = "cluster"
+}
+variable "configure_nfs" {
+  default = true
+}
+variable "nfs_mount_path" {
+  default = "/mnt/nfs-share"
+}
+
+
+/* --------------------------------------------------------------------------------------------
+Bastion options
+-------------------------------------------------------------------------------------------- */
+variable "bastion_ad" {
+ default = "kvZz:AP-TOKYO-1-AD-1"
+}
+variable "bastion_shape" {
+  default = "VM.Standard2.1"
+}
+variable "use_standard_image" {
+  default = true
+}
+variable "custom_bastion_image" {
+  default = ""
+}
+
+/* --------------------------------------------------------------------------------------------
+Compute Node options
+-------------------------------------------------------------------------------------------- */
+variable "shape" {
+  default = "BM.HPC2.36"
+}
+variable "node_count" {
+  default = 8
+}
+variable "boot_volume_size" {
+  default = 50
+}
+variable "use_marketplace_image" {
+  default = false
 }
 variable "image" {
   default = ""
 }
+variable "scheduler" {
+  default = "NONE"
+}
+variable "intel_mpi" {
+  default = false
+}
+variable "intel_mpi_version" {
+  default = "2019.4-070"
+}
 
-variable "use_custom_name" { 
-  default = false 
-} 
 
-variable "configure_nfs" { 
+/* --------------------------------------------------------------------------------------------
+# Network options
+-------------------------------------------------------------------------------------------- */
+variable "use_existing_vcn" {
   default = true
 }
-
-variable "nfs_mount_path" { 
-  default = "/mnt/nfs-share"
-}
-
-variable "cluster_name" { 
-  default = "cluster" 
-} 
-
-variable "shape" {
-  default = "BM.HPC2.36"
-}
-
-variable "ad" {
- default = "kvZz:AP-TOKYO-1-AD-1"
-}
-
-variable "bastion_ad" {
- default = "kvZz:AP-TOKYO-1-AD-1"
-}
-
-variable "ssh_key" {
+variable "vcn_id" {
   default = ""
 }
-
-variable "compartment_ocid" {
+variable "bastion_subnet_id" {
   default = ""
 }
-
-variable "vcn_subnet" {
-  default = "10.0.0.0/16"
+variable "cluster_subnet_id" {
+  default = ""
 }
-
-variable "private_subnet" {
-  default = "10.0.1.0/24"
-}
-
-variable "ssh_cidr" { 
-  default = "0.0.0.0/0"
-}
-
-variable "rdma_network" { 
+variable "rdma_network" {
   default = "192.168.168.0"
 }
 
+
+/* --------------------------------------------------------------------------------------------
+# Other options
+-------------------------------------------------------------------------------------------- */
+variable "vcn_subnet" {
+  default = "10.0.0.0/16"
+}
+variable "private_subnet" {
+  default = "10.0.1.0/24"
+}
+variable "ssh_cidr" {
+  default = "0.0.0.0/0"
+}
 variable "private" {
   default = true
 }
-
-variable "node_count" {
-  default = 2
-}
-
-variable "boot_volume_size" { 
-  default = 50
-}
-
-variable "bastion_shape" {
-  default = "VM.Standard2.1"
-}
-
 variable "bastion_image" {
   type = map(string)
   default = {
@@ -107,44 +147,3 @@ variable "bastion_image" {
 	"ap-osaka-1"		=    "ocid1.image.oc1.ap-osaka-1.aaaaaaaa23apvyouh3fuiw7aqjo574zsmgdwtetato6uxgu7tct7y4uaqila"
   }
 }
-
-variable "custom_bastion_image" { 
-  default = ""
-} 
-
-variable "use_marketplace_image" {
-  default = false
-}
-
-variable "use_standard_image" { 
-  default = true
-} 
-
-variable "use_existing_vcn" {
-  default = true
-}
-
-variable "vcn_id" {
-  default = ""
-}
-
-variable "bastion_subnet_id" {
-  default = ""
-}
-
-variable "cluster_subnet_id" {
-  default = ""
-}
-
-variable "scheduler" { 
-  default = "NONE"
-} 
-
-variable "intel_mpi" { 
-  default = false
-}
-
-variable "intel_mpi_version" {
-  default = "2019.4-070"
-}
-
