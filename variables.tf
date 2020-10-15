@@ -2,7 +2,7 @@
 # System values
 -------------------------------------------------------------------------------------------- */
 variable "region" {
- default = "ap-tokyo-1"
+ default = ""
 }
 variable "tenancy_ocid" {
  default = ""
@@ -24,7 +24,7 @@ variable "fingerprint" {
 # General cluster values
 -------------------------------------------------------------------------------------------- */
 variable "ad" {
- default = "kvZz:AP-TOKYO-1-AD-1"
+ default = ""
 }
 variable "ssh_key" {
   default = ""
@@ -66,7 +66,6 @@ variable "shape" {
   default = "BM.HPC2.36"
 }
 variable "node_count" {
-  default = 8
 }
 variable "boot_volume_size" {
   default = 50
