@@ -1,2 +1,2 @@
 # oci-hpc-clusternetwork-private
-OCI の Cluster Network をすべて Private Subnet に作成するスクリプトです。
+https://github.com/oci-hpc/oci-hpc-clusternetwork をベースにした、 bastion と Cluster Network を Private Subnet に構築するスクリプトです。
